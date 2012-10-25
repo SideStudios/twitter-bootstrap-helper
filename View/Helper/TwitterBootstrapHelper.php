@@ -124,4 +124,13 @@ class TwitterBootstrapHelper extends AppHelper {
 		return $this->Bootstrap->pageHeader($title);
 	}
 
+	public function __call($calledMethod, $args) {
+		$classes = array('BootstrapForm', 'BootstrapHtml');
+		foreach($classes as $bootstrap_helper) {
+			$methods = get_class_methods($this->{$bootstrap_helper});
+			if(in_array($calledMethod, $methods)) {
+				return call_user_func_array(array($this->{$bootstrap_helper}, $calledMethod), $args);
+			}
+		}
+	}
 }
