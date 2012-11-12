@@ -361,10 +361,11 @@ class BootstrapFormHelper extends FormHelper {
 		$inputs = "";
 		$hiddenField = (isset($options['hiddenField']) && $options['hiddenField']);
 		foreach ($opt as $key => $val) {
+                        $selected = (isset($options['selected']) && $options['selected'] == $key ? array('checked' => true) : array());
 			$input = parent::radio(
 				$options["field"],
 				array($key => $val),
-				array("label" => false, 'hiddenField' => $hiddenField)
+				array_merge($selected, array("label" => false, 'hiddenField' => $hiddenField))
 			);
 			$id = array();
 			preg_match_all("/id=\"[a-zA-Z0-9_-]*\"/", $input, $id);
