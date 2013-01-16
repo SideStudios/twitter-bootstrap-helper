@@ -59,7 +59,7 @@ class BootstrapFormHelper extends FormHelper {
 			"label" => "",
 			"append" => false,
 			"prepend" => false,
-			"state" => false
+			"state" => false,
 		);
 		return array_merge($defaults, $options);
 	}
