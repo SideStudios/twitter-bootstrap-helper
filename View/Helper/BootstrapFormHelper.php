@@ -454,4 +454,8 @@ class BootstrapFormHelper extends FormHelper {
 		return $options;
 	}
 
+	function text($field, $options = array()){
+		return parent::text($field, $options);
+	}
+
 }
