@@ -213,10 +213,21 @@ class BootstrapFormHelper extends FormHelper {
 		if ($options['label'] === false) {
 			$options['label'] = '';
 		} else if (!empty($options['label'])) {
+			$labelAttributes = array();
+			if (is_array($options['label'])) {
+				$labelText = null;
+				if (isset($options['label']['text'])) {
+					$labelText = $options['label']['text'];
+					unset($options['label']['text']);
+				}
+				$labelAttributes = array_merge($labelAttributes, $options['label']);
+			} else {
+				$labelText = $options['label'];
+			}
 			$options['label'] = $this->label(
 				$options['field'],
-				$options['label'],
-				"control-label"
+				$labelText,
+				(!empty($labelAttributes) ? $labelAttributes : "control-label")
 			);
 		} else {
 			$options['label'] = $this->label(
