@@ -255,6 +255,9 @@ class BootstrapFormHelper extends FormHelper {
 		if ($options["state"] !== false) {
 			$wrap_class = "{$wrap_class} {$options["state"]}";
 		}
+		if (isset($options["required"]) && $options["required"] !== false) {
+			$wrap_class = "{$wrap_class} required";
+		}
 		return $this->Html->tag(
 			"div",
 			$options['label'].$input,
